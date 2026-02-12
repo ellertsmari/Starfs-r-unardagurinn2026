@@ -272,7 +272,8 @@ function isEventDay(now: Date): boolean {
 }
 
 function getCountdown(now: Date): { days: number; hours: number; minutes: number; seconds: number } | null {
-  const target = new Date(EVENT_DATE.year, EVENT_DATE.month - 1, EVENT_DATE.day, 0, 0, 0);
+  // Count down to the start of the first schedule item (09:00)
+  const target = new Date(EVENT_DATE.year, EVENT_DATE.month - 1, EVENT_DATE.day, 9, 0, 0);
   const diff = target.getTime() - now.getTime();
   if (diff <= 0) return null;
 
