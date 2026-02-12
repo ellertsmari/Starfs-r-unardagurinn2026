@@ -1,37 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Starfsþróunardagur - Tölvunarfræðimenntun í framhaldsskólum
 
-## Getting Started
+Vefsíða fyrir starfsþróunardag kennara sem haldinn verður **27. febrúar 2026** í Tækniskólanum á Háteigsvegi. Dagurinn snýst að tölvunarfræðikennslu í framhaldsskólum á Íslandi.
 
-First, run the development server:
+## Dagskrá
+
+**Formiddagur** (sameiginleg dagskrá með öðrum hópum):
+- 09:00 - Móttaka og morgunverður / kynning á skólanum
+- 10:00 - Innslög sem eiga erindi við alla þátttakendur
+- 11:00 - Kaffihlé
+- 11:20 - Fyrirlestur (TBA)
+- 12:00 - Hádegisverður
+
+**Síðdegi** (tölvunarfræðimenntun, 13:00-15:20):
+- Tölvubraut FB - Hjörvar og Bjarni frá Fjölbrautaskólanum í Breiðholti kynna nýja tölvubraut
+- Sögur úr kennslu - kennarar deila reynslu
+- Virk hlustunaræfing - þriggja manna hópar æfa virka hlustun (með innbyggðum niðurtalningum)
+- Almenn umræða
+
+**15:20** - Kaffihlé og tengslamyndun
+
+## Eiginleikar
+
+- Niðurtalning fram að viðburðinum, breytist í rauntímaklukku á deginum sjálfum
+- Smellanlegar dagskrárliðir sem birta nánari upplýsingar
+- Framvindustika og LIVE-merki á deginum sjálfum
+- Innbyggðar niðurtalningar (20 mín / 15 mín) fyrir virka hlustunaræfingu
+- Google Maps kort af Tækniskólanum
+- Snjallsímavænt (bottom sheet fyrir upplýsingar á minni skjám)
+- Páskaegg falið á vefþjóninum
+
+## Keyrsla
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Opnaðu [http://localhost:3000](http://localhost:3000) í vafranum.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tæknilegt
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Starfs-r-unardagurinn2026
+Byggt með [Next.js](https://nextjs.org) (App Router) og [Tailwind CSS](https://tailwindcss.com).
