@@ -194,6 +194,14 @@ const SCHEDULE: ScheduleItem[] = [
     subtitle: "Kaffi, te og veitingar",
     type: "break",
   },
+  {
+    id: "evening",
+    time: "20:00",
+    endTime: "",
+    title: "Sameiginleg gleði",
+    subtitle: "FÁ - kvöldviðburður",
+    type: "break",
+  },
 ];
 
 const MORNING_IDS = ["registration", "opening", "morning-coffee", "keynote", "lunch"];
@@ -292,8 +300,13 @@ function toMinutes(timeStr: string): number {
   return h * 60 + m;
 }
 
+function hasNumericTime(item: ScheduleItem): boolean {
+  return /^\d{2}:\d{2}$/.test(item.time) && /^\d{2}:\d{2}$/.test(item.endTime);
+}
+
 function getStatus(item: ScheduleItem, now: Date): ItemStatus {
   if (!isEventDay(now)) return "upcoming";
+  if (!hasNumericTime(item)) return "upcoming";
 
   const nowMins = now.getHours() * 60 + now.getMinutes();
   const startMins = toMinutes(item.time);
@@ -631,6 +644,49 @@ function DetailContent({ id }: { id: string }) {
         </div>
       );
 
+    case "evening":
+      return (
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-amber-300">
+            Sameiginleg gleði
+          </h3>
+          <p className="text-gray-300 leading-relaxed">
+            Dagurinn endar með sameiginlegum kvöldviðburði á vegum FÁ kl. 20:00.
+            Allir þátttakendur eru velkomnir - tilvalið tækifæri til að ljúka
+            deginum saman í góðum félagsskap.
+          </p>
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+            <h4 className="font-medium text-amber-300 mb-2">Skráning</h4>
+            <p className="text-gray-300 text-sm mb-4">
+              Skannaðu QR-kóðann hér að neðan til að skrá þig í kvöldviðburðinn.
+              Við hvetjum alla til að taka þátt!
+            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/qr-sameiginleg-gledi.png"
+              alt="QR kóði til skráningar í kvöldviðburðinn"
+              className="mx-auto max-w-[250px] w-full rounded-lg border border-[#30363d]"
+            />
+          </div>
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 text-sm text-gray-300">
+            <span className="text-amber-300 font-medium">Staðsetning:</span>{" "}
+            Fjölbrautaskólinn við Ármúla (FÁ) - kl. 20:00
+          </div>
+          <div className="rounded-lg overflow-hidden border border-[#30363d]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.299560062268!2d-21.886288921714915!3d64.13764017728884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d674bec00942db%3A0x36e0daead10bfaf8!2zRmrDtmxicmF1dGFza8OzbGlubiB2acOwIMOBcm3Dumxh!5e1!3m2!1sen!2sis!4v1770911482944!5m2!1sen!2sis"
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Fjölbrautaskólinn við Ármúla"
+            />
+          </div>
+        </div>
+      );
+
     default:
       return null;
   }
@@ -725,10 +781,14 @@ function ScheduleCard({
             <span className="font-mono text-xs sm:text-sm text-gray-400">
               {item.time}
             </span>
-            <span className="text-gray-600 text-xs">&rarr;</span>
-            <span className="font-mono text-xs sm:text-sm text-gray-500">
-              {item.endTime}
-            </span>
+            {item.endTime && (
+              <>
+                <span className="text-gray-600 text-xs">&rarr;</span>
+                <span className="font-mono text-xs sm:text-sm text-gray-500">
+                  {item.endTime}
+                </span>
+              </>
+            )}
             {status === "current" && (
               <span className="flex items-center gap-1 text-xs text-green-400 font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -767,8 +827,9 @@ export default function SchedulePage() {
     if (!now || !isLive) return { progress: 0, completedCount: 0, currentItem: null };
 
     const nowMins = now.getHours() * 60 + now.getMinutes();
-    const dayStart = toMinutes(SCHEDULE[0].time);
-    const dayEnd = toMinutes(SCHEDULE[SCHEDULE.length - 1].endTime);
+    const timedItems = SCHEDULE.filter(hasNumericTime);
+    const dayStart = toMinutes(timedItems[0].time);
+    const dayEnd = toMinutes(timedItems[timedItems.length - 1].endTime);
     const totalDuration = dayEnd - dayStart;
 
     const elapsed = Math.max(0, Math.min(nowMins - dayStart, totalDuration));
@@ -786,7 +847,8 @@ export default function SchedulePage() {
   }, [now, isLive]);
 
   const morningItems = SCHEDULE.filter((i) => MORNING_IDS.includes(i.id));
-  const afternoonItems = SCHEDULE.filter((i) => !MORNING_IDS.includes(i.id));
+  const afternoonItems = SCHEDULE.filter((i) => !MORNING_IDS.includes(i.id) && i.id !== "evening");
+  const eveningItem = SCHEDULE.find((i) => i.id === "evening") ?? null;
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-[#e6edf3] flex flex-col">
@@ -903,6 +965,25 @@ export default function SchedulePage() {
                 )}
               </div>
             ))}
+
+            {/* Evening event */}
+            {eveningItem && (
+              <>
+                <div className="flex items-center gap-3 py-2 sm:py-3">
+                  <div className="flex-1 h-px bg-amber-500/30" />
+                  <span className="text-xs font-mono text-amber-400/70 px-2 whitespace-nowrap">
+                    {"// Kvöldviðburður"}
+                  </span>
+                  <div className="flex-1 h-px bg-amber-500/30" />
+                </div>
+                <ScheduleCard
+                  item={eveningItem}
+                  isSelected={selectedId === eveningItem.id}
+                  status={now ? getStatus(eveningItem, now) : "upcoming"}
+                  onClick={() => setSelectedId(eveningItem.id)}
+                />
+              </>
+            )}
           </div>
 
           {/* Details panel — desktop only (sidebar) */}
