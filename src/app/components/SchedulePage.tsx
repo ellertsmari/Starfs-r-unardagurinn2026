@@ -905,7 +905,7 @@ export default function SchedulePage() {
           <div className="lg:col-span-2 space-y-2">
             {/* Morning section header */}
             <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1 pl-1">
-              {"// Formiddagur"}
+              {"// Morgundagskrá"}
             </div>
 
             {morningItems.map((item) => (
@@ -929,7 +929,7 @@ export default function SchedulePage() {
 
             {/* Afternoon section header */}
             <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1 pl-1">
-              {"// Síðdegisdagskrá"}
+              {"// Eftirhádegisdagskrá"}
             </div>
 
             {afternoonItems.map((item) => (
