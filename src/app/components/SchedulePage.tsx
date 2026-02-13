@@ -929,7 +929,7 @@ export default function SchedulePage() {
 
             {/* Afternoon section header */}
             <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1 pl-1">
-              {"// Eftirhádegisdagskrá"}
+              {"// Dagskrá eftir hádegi"}
             </div>
 
             {afternoonItems.map((item) => (
