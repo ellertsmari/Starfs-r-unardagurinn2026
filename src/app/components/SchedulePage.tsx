@@ -167,8 +167,8 @@ const SCHEDULE: ScheduleItem[] = [
     time: "11:20",
     endTime: "12:00",
     title: "Fyrirlestur",
-    subtitle: "Verður tilkynnt síðar (TBA)",
-    type: "tba",
+    subtitle: "Hildur Davíðsdóttir - Forritunarkennsla og námsmat á tímum gervigreindar",
+    type: "keynote",
   },
   {
     id: "lunch",
@@ -394,17 +394,33 @@ function DetailContent({ id }: { id: string }) {
     case "keynote":
       return (
         <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-gray-300">
-            Fyrirlestur - TBA
+          <h3 className="text-xl font-semibold text-purple-300">
+            Forritunarkennsla og námsmat á tímum gervigreindar
           </h3>
-          <div className="bg-gray-500/10 border border-gray-500/20 rounded-lg p-6 text-center">
-            <div className="font-mono text-gray-600 text-sm mb-3">
-              {"// TODO: Finna fyrirlesara"}
-            </div>
-            <p className="text-gray-400">
-              Fyrirlesari verður tilkynntur fljótlega.
+          <p className="text-gray-300 leading-relaxed">
+            Hildur Davíðsdóttir frá Háskólanum í Reykjavík (HR) fjallar um hvernig
+            háskólinn bregst við þeim áskorunum og tækifærum sem gervigreind
+            skapar í forritunarkennslu og námsmati.
+          </p>
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
+            <h4 className="font-medium text-purple-300 mb-2">Um fyrirlesarann</h4>
+            <p className="text-gray-300 text-sm">
+              Hildur Davíðsdóttir er kennari við tölvunarfræðideild HR og hefur
+              reynslu af kennslu í forritun og hugbúnaðarþróun.
             </p>
-            <p className="text-gray-500 text-sm mt-2">Fylgstu með á vefsíðunni.</p>
+          </div>
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4">
+            <h4 className="font-medium text-purple-300 mb-2">Meðal umfjöllunarefna</h4>
+            <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm">
+              <li>Hvernig gervigreind breytir forritunarkennslu</li>
+              <li>Áskoranir í námsmati þegar nemendur hafa aðgang að AI verkfærum</li>
+              <li>Aðferðir HR við að aðlaga kennslu og námsmat</li>
+              <li>Hvernig framhaldsskólar geta nýtt sér reynslu HR</li>
+            </ul>
+          </div>
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4 text-sm text-gray-300">
+            <span className="text-purple-300 font-medium">Tími:</span>{" "}
+            11:20 - 12:00. Fyrirlesturinn sjálfur er um 20-30 mínútur og restin af tímanum fer í umræður.
           </div>
         </div>
       );
