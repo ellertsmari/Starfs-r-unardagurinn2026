@@ -146,6 +146,7 @@ const SCHEDULE: ScheduleItem[] = [
     title: "Móttaka og morgunverður",
     subtitle: "Gengið um skólann",
     type: "break",
+    room: "Matsalur (4. hæð)",
   },
   {
     id: "opening",
@@ -154,6 +155,7 @@ const SCHEDULE: ScheduleItem[] = [
     title: "Innslög sem eiga erindi við alla þátttakendur",
     subtitle: "Sameiginleg dagskrá",
     type: "opening",
+    room: "Hátíðarsalur (2. hæð)",
   },
   {
     id: "morning-coffee",
@@ -179,6 +181,7 @@ const SCHEDULE: ScheduleItem[] = [
     title: "Hádegisverður",
     subtitle: "Í boði skipuleggjenda",
     type: "break",
+    room: "Matsalur (4. hæð)",
   },
   {
     id: "afternoon-block",
@@ -341,7 +344,7 @@ function DetailContent({ id }: { id: string }) {
             <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm">
               <li>Tækniskólinn, Háteigsvegi (sjá kort)</li>
               <li>Wifi - SSID: <code className="bg-black/30 px-1.5 py-0.5 rounded text-amber-300 font-mono">T Skoli Hotspot</code> er opið og þarf ekki lykilorð</li>
-              <li>Móttaka og kaffi eru í matsal á fjórðu hæð til vinstri þegar komið er upp stigann (eða lyftuna)</li>
+              <li>Morgunverður er í matsal á 4. hæð, gengið til vinstri frá stiga eða lyftu</li>
               <li>Nýtum tímann til þess að kynnast öðrum þáttakendum</li>
             </ul>
           </div>
@@ -371,6 +374,10 @@ function DetailContent({ id }: { id: string }) {
             Innslög og kynningar sem varða alla kennara og skólastjórnendur.
           </p>
           <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+            <h4 className="font-medium text-blue-300 mb-2">Staðsetning</h4>
+            <p className="text-gray-300 text-sm mb-3">
+              Hátíðarsalur (2. hæð). Gengið til vinstri frá stiga/lyftu. Salurinn er innst á ganginum og gengið er inn hægra megin.
+            </p>
             <h4 className="font-medium text-blue-300 mb-2">Á dagskrá</h4>
             <ul className="list-disc list-inside text-gray-300 space-y-1.5 text-sm">
               <li>Velkomin og kynning dagskrár</li>
@@ -427,7 +434,7 @@ function DetailContent({ id }: { id: string }) {
           </div>
           <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4 text-sm text-gray-300">
             <span className="text-purple-300 font-medium">Staðsetning:</span>{" "}
-            Stofa 205 (2. hæð). Gengið er til hægri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
+            Stofa 205 (2. hæð). Gengið er til vinstri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
           </div>
         </div>
       );
@@ -442,6 +449,10 @@ function DetailContent({ id }: { id: string }) {
             Hádegismatur í boði skipuleggjenda. Nýttu tímann til að kynnast
             samstarfsfólki og ræða efni morgunsins.
           </p>
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 text-sm text-gray-300">
+            <span className="text-amber-300 font-medium">Staðsetning:</span>{" "}
+            Matsalur (4. hæð). Gengið til vinstri frá stiga eða lyftu.
+          </div>
           <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 text-sm text-gray-300">
             <span className="text-amber-300 font-medium">Ábending:</span>{" "}
             Nýttu hádegistímann til tengslamyndunar — kynntu þig fyrir kennurum
@@ -462,7 +473,7 @@ function DetailContent({ id }: { id: string }) {
           </p>
           <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4 text-sm text-gray-300">
             <span className="text-cyan-300 font-medium">Staðsetning:</span>{" "}
-            Stofa 205 (2. hæð). Gengið er til hægri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
+            Stofa 205 (2. hæð). Gengið er til vinstri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
           </div>
         </div>
       );
