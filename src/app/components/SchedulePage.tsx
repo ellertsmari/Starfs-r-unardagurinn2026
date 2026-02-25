@@ -133,6 +133,7 @@ interface ScheduleItem {
   title: string;
   subtitle: string;
   type: ItemType;
+  room?: string;
 }
 
 // ─── Schedule Data ──────────────────────────────────────────────────────────
@@ -169,6 +170,7 @@ const SCHEDULE: ScheduleItem[] = [
     title: "Fyrirlestur",
     subtitle: "Hildur Davíðsdóttir - Forritunarkennsla og námsmat á tímum gervigreindar",
     type: "keynote",
+    room: "Stofa 205",
   },
   {
     id: "lunch",
@@ -185,6 +187,7 @@ const SCHEDULE: ScheduleItem[] = [
     title: "Síðdegisdagskrá",
     subtitle: "Tölvunarfræðimenntun í framhaldsskólum",
     type: "workshop",
+    room: "Stofa 205",
   },
   {
     id: "coffee",
@@ -422,6 +425,10 @@ function DetailContent({ id }: { id: string }) {
             <span className="text-purple-300 font-medium">Tími:</span>{" "}
             11:20 - 12:00. Fyrirlesturinn sjálfur er um 20-30 mínútur og restin af tímanum fer í umræður.
           </div>
+          <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-4 text-sm text-gray-300">
+            <span className="text-purple-300 font-medium">Staðsetning:</span>{" "}
+            Stofa 205 (2. hæð). Gengið er til hægri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
+          </div>
         </div>
       );
 
@@ -439,6 +446,23 @@ function DetailContent({ id }: { id: string }) {
             <span className="text-amber-300 font-medium">Ábending:</span>{" "}
             Nýttu hádegistímann til tengslamyndunar — kynntu þig fyrir kennurum
             frá öðrum skólum!
+          </div>
+        </div>
+      );
+
+    case "afternoon-block":
+      return (
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-cyan-300">
+            Síðdegisdagskrá
+          </h3>
+          <p className="text-gray-300 leading-relaxed">
+            Tölvunarfræðimenntun í framhaldsskólum. Dagskráin skiptist í kynningar,
+            reynslusögur og vinnustofu með áherslu á virka hlustun.
+          </p>
+          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4 text-sm text-gray-300">
+            <span className="text-cyan-300 font-medium">Staðsetning:</span>{" "}
+            Stofa 205 (2. hæð). Gengið er til hægri frá stiga/lyftu, síðasta stofan vinstra megin áður en gangurinn beygir.
           </div>
         </div>
       );
@@ -815,11 +839,18 @@ function ScheduleCard({
           <h3 className="font-semibold mt-1 sm:mt-1.5 text-sm sm:text-base text-[#e6edf3]">{item.title}</h3>
           <p className="text-xs sm:text-sm text-gray-400 mt-0.5">{item.subtitle}</p>
         </div>
-        <span
-          className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full border whitespace-nowrap shrink-0 ${styles.badge}`}
-        >
-          {TYPE_LABELS[item.type]}
-        </span>
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
+          <span
+            className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full border whitespace-nowrap ${styles.badge}`}
+          >
+            {TYPE_LABELS[item.type]}
+          </span>
+          {item.room && (
+            <span className="text-[10px] sm:text-xs font-mono text-gray-500 bg-gray-500/10 px-1.5 py-0.5 rounded border border-gray-500/20">
+              {item.room}
+            </span>
+          )}
+        </div>
       </div>
     </button>
   );
