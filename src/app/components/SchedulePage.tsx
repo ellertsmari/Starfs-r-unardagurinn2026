@@ -220,7 +220,7 @@ interface AfternoonSubItem {
 }
 
 const AFTERNOON_ITEMS: AfternoonSubItem[] = [
-  { id: "fb-tolvubraut", title: "Tölvubraut FB - Hjörvar og Bjarni", icon: "💻", color: "green" },
+  { id: "fb-tolvubraut", title: "Tölvubraut FB - Guðlaugur, Hjörvar og Bjarni", icon: "💻", color: "green" },
   { id: "stories", title: "Sögur úr kennslu", icon: "📖", color: "green" },
   { id: "active-listening", title: "Virk hlustunaræfing", icon: "👂", color: "cyan" },
   { id: "discussion", title: "Almenn umræða", icon: "💬", color: "blue" },
@@ -485,7 +485,7 @@ function DetailContent({ id }: { id: string }) {
             Tölvubraut FB - Kynning á námslínu
           </h3>
           <p className="text-gray-300 leading-relaxed">
-            Hjörvar og Bjarni, kennarar frá Fjölbrautaskólanum í Breiðholti (FB),
+            Guðlaugur, Hjörvar og Bjarni, kennarar frá Fjölbrautaskólanum í Breiðholti (FB),
             kynna tölvubrautina - stúdentsprófsbraut sem undirbýr nemendur
             fyrir háskólanám í tölvunarfræði, hugbúnaðarverkfræði og skyldum
             greinum.
